@@ -1,6 +1,6 @@
 name: "Docker Socket Proxy"
-description: "Proxy over your Docker socket to a port. Configure which Docker API sections are accessible by enabling/disabling the options below. Each option controls access to a specific API endpoint (0=disabled, 1=enabled)."
-version: "1.1.2"
+description: "Proxy over your Docker socket to a port. Configure which Docker API sections are accessible by enabling/disabling the options below. Each option controls access to a specific API endpoint."
+version: "1.2.0"
 slug: "ha-docker-socket-proxy"
 init: false
 arch:
@@ -19,65 +19,65 @@ url: https://github.com/rikardronnkvist/ha-docker-socket-proxy
 
 
 options:
-  ALLOW_RESTARTS: 0
-  ALLOW_STOP: 0
-  ALLOW_START: 0
-  AUTH: 0
-  BUILD: 1
-  COMMIT: 1
-  CONFIGS: 1
-  CONTAINERS: 1
-  DISABLE_IPV6: 0
-  DISTRIBUTION: 1
-  EVENTS: 1
-  EXEC: 0
-  GRPC: 0
-  IMAGES: 1
-  INFO: 1
+  ALLOW_RESTARTS: false
+  ALLOW_STOP: false
+  ALLOW_START: false
+  AUTH: false
+  BUILD: true
+  COMMIT: true
+  CONFIGS: true
+  CONTAINERS: true
+  DISABLE_IPV6: false
+  DISTRIBUTION: true
+  EVENTS: true
+  EXEC: false
+  GRPC: false
+  IMAGES: true
+  INFO: true
   LOG_LEVEL: "info"
-  NETWORKS: 1
-  NODES: 1
-  PING: 1
-  PLUGINS: 1
-  POST: 0
-  SECRETS: 0
-  SERVICES: 1
-  SESSION: 1
+  NETWORKS: true
+  NODES: true
+  PING: true
+  PLUGINS: true
+  POST: false
+  SECRETS: false
+  SERVICES: true
+  SESSION: true
   SOCKET_PATH: "/var/run/docker.sock"
-  SWARM: 1
-  SYSTEM: 1
-  TASKS: 0
-  VERSION: 1
-  VOLUMES: 1
+  SWARM: true
+  SYSTEM: true
+  TASKS: false
+  VERSION: true
+  VOLUMES: true
 
 schema:
-  ALLOW_RESTARTS: int(0,1)
-  ALLOW_STOP: int(0,1)
-  ALLOW_START: int(0,1)
-  AUTH: int(0,1)
-  BUILD: int(0,1)
-  COMMIT: int(0,1)
-  CONFIGS: int(0,1)
-  CONTAINERS: int(0,1)
-  DISABLE_IPV6: int(0,1)
-  DISTRIBUTION: int(0,1)
-  EVENTS: int(0,1)
-  EXEC: int(0,1)
-  GRPC: int(0,1)
-  IMAGES: int(0,1)
-  INFO: int(0,1)
+  ALLOW_RESTARTS: bool
+  ALLOW_STOP: bool
+  ALLOW_START: bool
+  AUTH: bool
+  BUILD: bool
+  COMMIT: bool
+  CONFIGS: bool
+  CONTAINERS: bool
+  DISABLE_IPV6: bool
+  DISTRIBUTION: bool
+  EVENTS: bool
+  EXEC: bool
+  GRPC: bool
+  IMAGES: bool
+  INFO: bool
   LOG_LEVEL: list(debug|info|notice|warning|error|critical|alert|emergency)
-  NETWORKS: int(0,1)
-  NODES: int(0,1)
-  PING: int(0,1)
-  PLUGINS: int(0,1)
-  POST: int(0,1)
-  SECRETS: int(0,1)
-  SERVICES: int(0,1)
-  SESSION: int(0,1)
+  NETWORKS: bool
+  NODES: bool
+  PING: bool
+  PLUGINS: bool
+  POST: bool
+  SECRETS: bool
+  SERVICES: bool
+  SESSION: bool
   SOCKET_PATH: str
-  SWARM: int(0,1)
-  SYSTEM: int(0,1)
-  TASKS: int(0,1)
-  VERSION: int(0,1)
-  VOLUMES: int(0,1)
+  SWARM: bool
+  SYSTEM: bool
+  TASKS: bool
+  VERSION: bool
+  VOLUMES: bool

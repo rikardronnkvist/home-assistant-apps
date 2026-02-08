@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] - Boolean Configuration Options
+- Changed all configuration options from int to bool
+- Improved configuration readability and user experience
+
 ## [1.1.1] - Move to new repo
 - Brand new home
 
