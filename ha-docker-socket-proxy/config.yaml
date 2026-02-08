@@ -1,6 +1,6 @@
 name: "Docker Socket Proxy"
 description: "Proxy over your Docker socket to a port. Configure which Docker API sections are accessible by enabling/disabling the options below. Each option controls access to a specific API endpoint (0=disabled, 1=enabled)."
-version: "1.1.1"
+version: "1.1.2"
 slug: "ha-docker-socket-proxy"
 init: false
 arch:

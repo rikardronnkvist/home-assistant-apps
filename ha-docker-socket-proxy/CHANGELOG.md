@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1] - Move to new repo
+- Brand new home
+
 ## [1.1.1] - Graphics and Changelog
 - Icon and Logo
 - This changelog
