@@ -1,0 +1,83 @@
+name: "Docker Socket Proxy"
+description: "Proxy over your Docker socket to a port. Configure which Docker API sections are accessible by enabling/disabling the options below. Each option controls access to a specific API endpoint (0=disabled, 1=enabled)."
+version: "1.1.1"
+slug: "ha-docker-socket-proxy"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+ports:
+  2375/tcp: 2375
+ports_description:
+  2375/tcp: Proxy port for Docker API
+docker_api: true
+full_access: true
+url: https://github.com/rikardronnkvist/ha-docker-socket-proxy
+
+
+options:
+  ALLOW_RESTARTS: 0
+  ALLOW_STOP: 0
+  ALLOW_START: 0
+  AUTH: 0
+  BUILD: 1
+  COMMIT: 1
+  CONFIGS: 1
+  CONTAINERS: 1
+  DISABLE_IPV6: 0
+  DISTRIBUTION: 1
+  EVENTS: 1
+  EXEC: 0
+  GRPC: 0
+  IMAGES: 1
+  INFO: 1
+  LOG_LEVEL: "info"
+  NETWORKS: 1
+  NODES: 1
+  PING: 1
+  PLUGINS: 1
+  POST: 0
+  SECRETS: 0
+  SERVICES: 1
+  SESSION: 1
+  SOCKET_PATH: "/var/run/docker.sock"
+  SWARM: 1
+  SYSTEM: 1
+  TASKS: 0
+  VERSION: 1
+  VOLUMES: 1
+
+schema:
+  ALLOW_RESTARTS: int(0,1)
+  ALLOW_STOP: int(0,1)
+  ALLOW_START: int(0,1)
+  AUTH: int(0,1)
+  BUILD: int(0,1)
+  COMMIT: int(0,1)
+  CONFIGS: int(0,1)
+  CONTAINERS: int(0,1)
+  DISABLE_IPV6: int(0,1)
+  DISTRIBUTION: int(0,1)
+  EVENTS: int(0,1)
+  EXEC: int(0,1)
+  GRPC: int(0,1)
+  IMAGES: int(0,1)
+  INFO: int(0,1)
+  LOG_LEVEL: list(debug|info|notice|warning|error|critical|alert|emergency)
+  NETWORKS: int(0,1)
+  NODES: int(0,1)
+  PING: int(0,1)
+  PLUGINS: int(0,1)
+  POST: int(0,1)
+  SECRETS: int(0,1)
+  SERVICES: int(0,1)
+  SESSION: int(0,1)
+  SOCKET_PATH: str
+  SWARM: int(0,1)
+  SYSTEM: int(0,1)
+  TASKS: int(0,1)
+  VERSION: int(0,1)
+  VOLUMES: int(0,1)
