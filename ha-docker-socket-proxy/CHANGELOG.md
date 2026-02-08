@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.1] - Boolean Configuration Fix
+- Fix for boolean config options
+
 ## [1.2.0] - Boolean Configuration Options
 - Changed all configuration options from int to bool
 - Improved configuration readability and user experience

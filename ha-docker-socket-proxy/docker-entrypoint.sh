@@ -21,47 +21,57 @@ get_json_value() {
     fi
 }
 
+# Helper function to convert boolean values to integers (1 or 0)
+convert_bool_to_int() {
+    local value="$1"
+    case "$(echo "$value" | tr '[:upper:]' '[:lower:]')" in
+        true|1|yes)
+            echo "1"
+            ;;
+        *)
+            echo "0"
+            ;;
+    esac
+}
+
 # Load configuration from Home Assistant if running as add-on
 if [ -f /data/options.json ]; then
     # Export all options from Home Assistant config as environment variables
-    export ALLOW_RESTARTS=$(get_json_value "ALLOW_RESTARTS" "false" "/data/options.json")
-    export ALLOW_STOP=$(get_json_value "ALLOW_STOP" "false" "/data/options.json")
-    export ALLOW_START=$(get_json_value "ALLOW_START" "false" "/data/options.json")
-    export AUTH=$(get_json_value "AUTH" "false" "/data/options.json")
-    export BUILD=$(get_json_value "BUILD" "true" "/data/options.json")
-    export COMMIT=$(get_json_value "COMMIT" "true" "/data/options.json")
-    export CONFIGS=$(get_json_value "CONFIGS" "true" "/data/options.json")
-    export CONTAINERS=$(get_json_value "CONTAINERS" "true" "/data/options.json")
-    export DISABLE_IPV6=$(get_json_value "DISABLE_IPV6" "false" "/data/options.json")
-    export DISTRIBUTION=$(get_json_value "DISTRIBUTION" "true" "/data/options.json")
-    export EVENTS=$(get_json_value "EVENTS" "true" "/data/options.json")
-    export EXEC=$(get_json_value "EXEC" "false" "/data/options.json")
-    export GRPC=$(get_json_value "GRPC" "false" "/data/options.json")
-    export IMAGES=$(get_json_value "IMAGES" "true" "/data/options.json")
-    export INFO=$(get_json_value "INFO" "true" "/data/options.json")
+    export ALLOW_RESTARTS=$(convert_bool_to_int "$(get_json_value "ALLOW_RESTARTS" "false" "/data/options.json")")
+    export ALLOW_STOP=$(convert_bool_to_int "$(get_json_value "ALLOW_STOP" "false" "/data/options.json")")
+    export ALLOW_START=$(convert_bool_to_int "$(get_json_value "ALLOW_START" "false" "/data/options.json")")
+    export AUTH=$(convert_bool_to_int "$(get_json_value "AUTH" "false" "/data/options.json")")
+    export BUILD=$(convert_bool_to_int "$(get_json_value "BUILD" "true" "/data/options.json")")
+    export COMMIT=$(convert_bool_to_int "$(get_json_value "COMMIT" "true" "/data/options.json")")
+    export CONFIGS=$(convert_bool_to_int "$(get_json_value "CONFIGS" "true" "/data/options.json")")
+    export CONTAINERS=$(convert_bool_to_int "$(get_json_value "CONTAINERS" "true" "/data/options.json")")
+    export DISABLE_IPV6=$(convert_bool_to_int "$(get_json_value "DISABLE_IPV6" "false" "/data/options.json")")
+    export DISTRIBUTION=$(convert_bool_to_int "$(get_json_value "DISTRIBUTION" "true" "/data/options.json")")
+    export EVENTS=$(convert_bool_to_int "$(get_json_value "EVENTS" "true" "/data/options.json")")
+    export EXEC=$(convert_bool_to_int "$(get_json_value "EXEC" "false" "/data/options.json")")
+    export GRPC=$(convert_bool_to_int "$(get_json_value "GRPC" "false" "/data/options.json")")
+    export IMAGES=$(convert_bool_to_int "$(get_json_value "IMAGES" "true" "/data/options.json")")
+    export INFO=$(convert_bool_to_int "$(get_json_value "INFO" "true" "/data/options.json")")
     export LOG_LEVEL=$(get_json_value "LOG_LEVEL" "info" "/data/options.json")
-    export NETWORKS=$(get_json_value "NETWORKS" "true" "/data/options.json")
-    export NODES=$(get_json_value "NODES" "true" "/data/options.json")
-    export PING=$(get_json_value "PING" "true" "/data/options.json")
-    export PLUGINS=$(get_json_value "PLUGINS" "true" "/data/options.json")
-    export POST=$(get_json_value "POST" "false" "/data/options.json")
-    export SECRETS=$(get_json_value "SECRETS" "false" "/data/options.json")
-    export SERVICES=$(get_json_value "SERVICES" "true" "/data/options.json")
-    export SESSION=$(get_json_value "SESSION" "true" "/data/options.json")
+    export NETWORKS=$(convert_bool_to_int "$(get_json_value "NETWORKS" "true" "/data/options.json")")
+    export NODES=$(convert_bool_to_int "$(get_json_value "NODES" "true" "/data/options.json")")
+    export PING=$(convert_bool_to_int "$(get_json_value "PING" "true" "/data/options.json")")
+    export PLUGINS=$(convert_bool_to_int "$(get_json_value "PLUGINS" "true" "/data/options.json")")
+    export POST=$(convert_bool_to_int "$(get_json_value "POST" "false" "/data/options.json")")
+    export SECRETS=$(convert_bool_to_int "$(get_json_value "SECRETS" "false" "/data/options.json")")
+    export SERVICES=$(convert_bool_to_int "$(get_json_value "SERVICES" "true" "/data/options.json")")
+    export SESSION=$(convert_bool_to_int "$(get_json_value "SESSION" "true" "/data/options.json")")
     export SOCKET_PATH=$(get_json_value "SOCKET_PATH" "/var/run/docker.sock" "/data/options.json")
-    export SWARM=$(get_json_value "SWARM" "true" "/data/options.json")
-    export SYSTEM=$(get_json_value "SYSTEM" "true" "/data/options.json")
-    export TASKS=$(get_json_value "TASKS" "false" "/data/options.json")
-    export VERSION=$(get_json_value "VERSION" "true" "/data/options.json")
-    export VOLUMES=$(get_json_value "VOLUMES" "true" "/data/options.json")
+    export SWARM=$(convert_bool_to_int "$(get_json_value "SWARM" "true" "/data/options.json")")
+    export SYSTEM=$(convert_bool_to_int "$(get_json_value "SYSTEM" "true" "/data/options.json")")
+    export TASKS=$(convert_bool_to_int "$(get_json_value "TASKS" "false" "/data/options.json")")
+    export VERSION=$(convert_bool_to_int "$(get_json_value "VERSION" "true" "/data/options.json")")
+    export VOLUMES=$(convert_bool_to_int "$(get_json_value "VOLUMES" "true" "/data/options.json")")
 fi
 
-# Normalize the input for DISABLE_IPV6 to lowercase
-DISABLE_IPV6_LOWER=$(echo "$DISABLE_IPV6" | tr '[:upper:]' '[:lower:]')
-
-# Check for different representations of 'true' and set BIND_CONFIG
-case "$DISABLE_IPV6_LOWER" in
-    1|true|yes)
+# Check DISABLE_IPV6 value and set BIND_CONFIG
+case "$DISABLE_IPV6" in
+    1|true)
         BIND_CONFIG=":2375"
         ;;
     *)
