@@ -44,7 +44,7 @@ options:
   SERVICES: true
   SESSION: true
   SOCKET_PATH: "/var/run/docker.sock"
-  SWARM: true
+  SWARM: false
   SYSTEM: true
   TASKS: false
   VERSION: true
